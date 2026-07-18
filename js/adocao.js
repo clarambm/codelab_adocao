@@ -17,7 +17,7 @@ btnFiltro.addEventListener('click', () => {
   painelFiltro.classList.toggle('escondido');
 });
 
-// --- Buscar animais, aplicando filtros ---
+// Buscar animais, aplicando filtros
 async function buscarAnimais(filtros = {}) {
   let query = supabase.from('animais').select('*');
 
