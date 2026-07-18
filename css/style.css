@@ -1,8 +1,8 @@
 /* ============================================
-   ONG CodeLab 
+   ONG CodeLab
    Paleta:
-   #F5F5F5 - bege
-   #AEE1CD - verde menta
+   #F5F5F5 - fundo claro
+   #AEE1CD - verde-menta
    #4A4A4A - cinza escuro (texto)
    #FFB077 - laranja 
 ============================================ */
@@ -36,7 +36,7 @@ a {
   color: inherit;
 }
 
-
+/* ===== Cabeçalho / menu ===== */
 .topo {
   display: flex;
   justify-content: space-between;
@@ -75,9 +75,13 @@ a {
   background-color: #AEE1CD;
 }
 
-
+/* ===== Título principal ===== */
 main {
+  width: 100%;
   padding: 20px 40px 60px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 main h1 {
@@ -86,9 +90,10 @@ main h1 {
   color: #4A4A4A;
 }
 
-
+/* ===== Barra de filtro / busca (adoção) ===== */
 .barra-acoes {
   display: flex;
+  justify-content: center;
   gap: 12px;
   margin-bottom: 20px;
 }
@@ -120,7 +125,7 @@ main h1 {
   background-color: #fff;
 }
 
-
+/* ===== Painel de filtro ===== */
 .painel-filtro {
   display: flex;
   flex-wrap: wrap;
@@ -165,11 +170,12 @@ main h1 {
   display: none;
 }
 
-
+/* ===== Grade de cards de animais ===== */
 .grade-animais {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 24px;
+  text-align: left;
 }
 
 .card-animal {
@@ -222,13 +228,15 @@ main h1 {
   padding: 20px 0;
 }
 
-
+/* ===== Formulários (contato e cadastro) ===== */
 .form-contato,
 .form-cadastro {
   display: flex;
   flex-direction: column;
   gap: 6px;
   max-width: 420px;
+  margin: 0 auto;
+  text-align: left;
   background-color: #fff;
   padding: 30px;
   border-radius: 16px;
@@ -303,7 +311,7 @@ main h1 {
   color: #c0392b;
 }
 
-
+/* ===== Rodapé ===== */
 .rodape {
   background-color: #AEE1CD;
   margin-top: 60px;
@@ -342,7 +350,7 @@ main h1 {
   transform: translateY(-2px);
 }
 
-
+/* ===== Home ===== */
 .hero {
   position: relative;
   display: flex;
@@ -359,9 +367,8 @@ main h1 {
   margin-bottom: 24px;
 }
 
-
 .placeholder-imagem {
-  display: none; 
+  display: none; /* fica escondido até a imagem de cima dar erro de carregamento */
   width: 320px;
   max-width: 100%;
   height: 220px;
@@ -403,7 +410,67 @@ main h1 {
   width: 100%;
 }
 
+/* ===== detalhes do animal ===== */
+.link-voltar {
+  display: block;
+  width: fit-content;
+  margin: 0 0 20px 0;
+  font-weight: 600;
+  color: #4A4A4A;
+}
 
+.link-voltar:hover {
+  text-decoration: underline;
+}
+
+.detalhe-card {
+  display: flex;
+  gap: 32px;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+  flex-wrap: wrap;
+}
+
+.detalhe-foto {
+  width: 280px;
+  max-width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  background-color: #AEE1CD;
+}
+
+.detalhe-info {
+  flex: 1;
+  min-width: 220px;
+}
+
+.detalhe-info h1 {
+  margin-bottom: 16px;
+}
+
+.detalhe-lista {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.detalhe-lista li {
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.detalhe-descricao {
+  margin-bottom: 24px;
+  line-height: 1.6;
+  color: #4A4A4A;
+}
+
+/* ===== Responsivo básico ===== */
 @media (max-width: 600px) {
   .topo {
     flex-direction: column;

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ONG CodeLab - Cadastro de Animal</title>
+  <title>ONG CodeLab - Detalhes do Animal</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,62 +12,19 @@
     <div class="logo">ONG <span class="destaque">CODELAB</span></div>
     <nav>
       <a href="index.html">Home</a>
-      <a href="adocao.html">Adote</a>
+      <a href="adocao.html" class="ativo">Adote</a>
       <a href="contato.html">Contato</a>
-      <a href="cadastro.html" class="ativo">Cadastrar</a>
+      <a href="cadastro.html">Cadastrar</a>
     </nav>
   </header>
 
   <main>
-    <h1>CADASTRAR ANIMAL</h1>
+    <a href="adocao.html" class="link-voltar">&larr; Voltar para adoção</a>
 
-    <form id="form-cadastro" class="form-cadastro">
-      <label for="nome">Nome</label>
-      <input type="text" id="nome" name="nome" required>
-
-      <label for="especie">Espécie</label>
-      <select id="especie" name="especie" required>
-        <option value="">Selecione</option>
-        <option value="cachorro">Cachorro</option>
-        <option value="gato">Gato</option>
-      </select>
-
-      <label for="porte">Porte</label>
-      <select id="porte" name="porte" required>
-        <option value="">Selecione</option>
-        <option value="pequeno">Pequeno</option>
-        <option value="medio">Médio</option>
-        <option value="grande">Grande</option>
-      </select>
-
-      <label for="sexo">Sexo</label>
-      <select id="sexo" name="sexo" required>
-        <option value="">Selecione</option>
-        <option value="macho">Macho</option>
-        <option value="femea">Fêmea</option>
-      </select>
-
-      <label for="idade">Idade</label>
-      <select id="idade" name="idade" required>
-        <option value="">Selecione</option>
-        <option value="filhote">Filhote</option>
-        <option value="adulto">Adulto</option>
-        <option value="idoso">Idoso</option>
-      </select>
-
-      <label for="descricao">Sobre o animal</label>
-      <textarea id="descricao" name="descricao" rows="4" placeholder="Conte um pouco sobre a personalidade, história ou cuidados especiais desse animal..."></textarea>
-
-      <label for="foto">Foto do animal</label>
-      <input type="file" id="foto" name="foto" accept="image/*" required>
-
-      <!-- Preview da imagem antes de enviar -->
-      <img id="preview-foto" class="preview-foto escondido" alt="Pré-visualização">
-
-      <button type="submit" id="btn-cadastrar">CADASTRAR</button>
-    </form>
-
-    <p id="msg-status" class="msg-status"></p>
+    <!-- detalhes.js -->
+    <div id="detalhe-animal" class="detalhe-animal">
+      <p class="carregando">Carregando informações...</p>
+    </div>
   </main>
 
   <footer class="rodape">
@@ -75,7 +32,6 @@
       <p class="rodape-endereco">
         📍 Rua das Flores, 123 - São Paulo, SP
       </p>
-
       <div class="rodape-redes">
         <a href="https://instagram.com/ongcodelab" target="_blank" rel="noopener" aria-label="Instagram">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
@@ -84,13 +40,11 @@
             <circle cx="17.4" cy="6.6" r="1.1"/>
           </svg>
         </a>
-
         <a href="https://facebook.com/ongcodelab" target="_blank" rel="noopener" aria-label="Facebook">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
             <path d="M13.5 21v-7.7h2.6l.4-3h-3v-1.9c0-.9.25-1.5 1.55-1.5H16.6V4.2c-.27-.04-1.2-.1-2.28-.1-2.26 0-3.8 1.38-3.8 3.9v2.2H8v3h2.5V21h3z"/>
           </svg>
         </a>
-
         <a href="https://wa.me/5511999999999" target="_blank" rel="noopener" aria-label="WhatsApp">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
             <path d="M12 2.1c-5.5 0-10 4.5-10 10 0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10s-4.5-10-10-9.8zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3a8 8 0 1 1 7.1 3.8z"/>
@@ -101,6 +55,6 @@
     </div>
   </footer>
 
-  <script type="module" src="js/cadastro.js"></script>
+  <script type="module" src="js/detalhes.js"></script>
 </body>
 </html>

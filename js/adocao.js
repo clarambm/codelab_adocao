@@ -17,7 +17,7 @@ btnFiltro.addEventListener('click', () => {
   painelFiltro.classList.toggle('escondido');
 });
 
-// --- Buscar animais, aplicando filtros ---
+// Buscar animais, aplicando filtros
 async function buscarAnimais(filtros = {}) {
   let query = supabase.from('animais').select('*');
 
@@ -59,7 +59,7 @@ function renderizarAnimais(animais) {
     <div class="card-animal">
       <img src="${animal.foto_url}" alt="${animal.nome}">
       <h3>${animal.nome}</h3>
-      <button class="btn-detalhes" data-id="${animal.id}">Ver Mais Detalhes</button>
+      <a class="btn-detalhes" href="detalhes.html?id=${animal.id}">Ver Mais Detalhes</a>
     </div>
   `).join('');
 }

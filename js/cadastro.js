@@ -9,7 +9,7 @@ const msgStatus = document.getElementById('msg-status');
 const inputFoto = document.getElementById('foto');
 const previewFoto = document.getElementById('preview-foto');
 
-//Mostrar preview da imagem assim que o usuário escolhe o arquivo
+// Mostrar preview da imagem assim que o usuário escolhe o arquivo
 inputFoto.addEventListener('change', () => {
   const arquivo = inputFoto.files[0];
   if (!arquivo) {
@@ -25,7 +25,7 @@ inputFoto.addEventListener('change', () => {
   leitor.readAsDataURL(arquivo);
 });
 
-//Envio do formulário
+// Envio do formulário
 form.addEventListener('submit', async (evento) => {
   evento.preventDefault();
 
@@ -34,6 +34,7 @@ form.addEventListener('submit', async (evento) => {
   const porte = document.getElementById('porte').value;
   const sexo = document.getElementById('sexo').value;
   const idade = document.getElementById('idade').value;
+  const descricao = document.getElementById('descricao').value.trim();
   const arquivoFoto = inputFoto.files[0];
 
   if (!arquivoFoto) {
@@ -48,7 +49,7 @@ form.addEventListener('submit', async (evento) => {
   msgStatus.className = 'msg-status';
 
   try {
-    //Faz upload da foto pro Storage
+    // Faz upload da foto pro Storage
     // Nome único pro arquivo, pra não sobrescrever fotos de nomes iguais
     const nomeArquivo = `${Date.now()}-${arquivoFoto.name}`;
 
@@ -61,7 +62,7 @@ form.addEventListener('submit', async (evento) => {
       throw new Error('Erro no upload da foto: ' + erroUpload.message);
     }
 
-    //Pega a URL pública da foto que acabou de subir
+    // Pega a URL pública da foto que acabou de subir
     const { data: urlData } = supabase
       .storage
       .from(NOME_BUCKET)
@@ -78,6 +79,7 @@ form.addEventListener('submit', async (evento) => {
         porte,
         sexo,
         idade,
+        descricao,
         foto_url: fotoUrl,
       }]);
 
@@ -85,7 +87,7 @@ form.addEventListener('submit', async (evento) => {
       throw new Error('Erro ao salvar animal: ' + erroInsert.message);
     }
 
-    // Ação efetuada
+    // Ação efetuada 
     msgStatus.textContent = 'Animal cadastrado com sucesso!';
     msgStatus.classList.add('sucesso');
     form.reset();
