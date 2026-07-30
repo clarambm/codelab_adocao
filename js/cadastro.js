@@ -1,7 +1,13 @@
 // js/cadastro.js
 import { supabase } from './supabase.js';
 
-const NOME_BUCKET = 'fotos_animais';
+// Protege a página
+const { data: { session } } = await supabase.auth.getSession();
+if (!session) {
+  window.location.href = 'login.html';
+}
+
+const NOME_BUCKET = 'fotos-animais';
 
 const form = document.getElementById('form-cadastro');
 const btnCadastrar = document.getElementById('btn-cadastrar');
@@ -9,7 +15,13 @@ const msgStatus = document.getElementById('msg-status');
 const inputFoto = document.getElementById('foto');
 const previewFoto = document.getElementById('preview-foto');
 
-// Mostrar preview da imagem assim que o usuário escolhe o arquivo
+// Botão de sair
+document.getElementById('btn-sair').addEventListener('click', async () => {
+  await supabase.auth.signOut();
+  window.location.href = 'login.html';
+});
+
+//Mostrar preview da imagem assim que o usuário escolhe o arquivo
 inputFoto.addEventListener('change', () => {
   const arquivo = inputFoto.files[0];
   if (!arquivo) {
@@ -25,7 +37,7 @@ inputFoto.addEventListener('change', () => {
   leitor.readAsDataURL(arquivo);
 });
 
-// Envio do formulário
+//Envio do formulário
 form.addEventListener('submit', async (evento) => {
   evento.preventDefault();
 
@@ -49,7 +61,7 @@ form.addEventListener('submit', async (evento) => {
   msgStatus.className = 'msg-status';
 
   try {
-    // Faz upload da foto pro Storage
+    //Faz upload da foto pro Storage
     // Nome único pro arquivo, pra não sobrescrever fotos de nomes iguais
     const nomeArquivo = `${Date.now()}-${arquivoFoto.name}`;
 
@@ -70,7 +82,7 @@ form.addEventListener('submit', async (evento) => {
 
     const fotoUrl = urlData.publicUrl;
 
-    //Insere o animal na tabela
+    // 3. Insere o animal na tabela, já com o link da foto
     const { error: erroInsert } = await supabase
       .from('animais')
       .insert([{
@@ -87,7 +99,7 @@ form.addEventListener('submit', async (evento) => {
       throw new Error('Erro ao salvar animal: ' + erroInsert.message);
     }
 
-    // Ação efetuada 
+    // Ação efetuada
     msgStatus.textContent = 'Animal cadastrado com sucesso!';
     msgStatus.classList.add('sucesso');
     form.reset();
