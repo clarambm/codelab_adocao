@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONG CodeLab - Editar Animal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="topo">
+    <div class="logo">ONG <span class="destaque">CODELAB</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="adocao.html">Adote</a>
+      <a href="contato.html">Contato</a>
+      <a href="cadastro.html">Cadastrar</a>
+      <a href="gerenciar.html" class="ativo">Gerenciar</a>
+    </nav>
+  </header>
+
+  <main>
+    <a href="gerenciar.html" class="link-voltar">&larr; Voltar para gerenciar</a>
+    <h1>EDITAR ANIMAL</h1>
+
+    <form id="form-editar" class="form-cadastro">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="especie">Espécie</label>
+      <select id="especie" name="especie" required>
+        <option value="">Selecione</option>
+        <option value="cachorro">Cachorro</option>
+        <option value="gato">Gato</option>
+      </select>
+
+      <label for="porte">Porte</label>
+      <select id="porte" name="porte" required>
+        <option value="">Selecione</option>
+        <option value="pequeno">Pequeno</option>
+        <option value="medio">Médio</option>
+        <option value="grande">Grande</option>
+      </select>
+
+      <label for="sexo">Sexo</label>
+      <select id="sexo" name="sexo" required>
+        <option value="">Selecione</option>
+        <option value="macho">Macho</option>
+        <option value="femea">Fêmea</option>
+      </select>
+
+      <label for="idade">Idade</label>
+      <select id="idade" name="idade" required>
+        <option value="">Selecione</option>
+        <option value="filhote">Filhote</option>
+        <option value="adulto">Adulto</option>
+        <option value="idoso">Idoso</option>
+      </select>
+
+      <label for="descricao">Sobre o animal</label>
+      <textarea id="descricao" name="descricao" rows="4"></textarea>
+
+      <label for="foto">Trocar foto </label>
+      <input type="file" id="foto" name="foto" accept="image/*">
+      <img id="preview-foto" class="preview-foto" alt="Foto atual">
+
+      <button type="submit" id="btn-salvar">SALVAR ALTERAÇÕES</button>
+    </form>
+
+    <p id="msg-status" class="msg-status"></p>
+  </main>
+
+  <footer class="rodape"></footer>
+
+  <script type="module" src="js/editar.js"></script>
+</body>
+</html>

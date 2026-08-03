@@ -5,10 +5,14 @@ const form = document.getElementById('form-login');
 const btnLogin = document.getElementById('btn-login');
 const msgStatus = document.getElementById('msg-status');
 
-// Se já estiver logado, manda direto pro cadastro
+// pega pra onde deve voltar depois do login 
+const parametros = new URLSearchParams(window.location.search);
+const destino = parametros.get('next') || 'cadastro.html';
+
+// Se já estiver logado, manda direto pro cadastro ou gerencua
 const { data: { session } } = await supabase.auth.getSession();
 if (session) {
-  window.location.href = 'cadastro.html';
+  window.location.href = destino;
 }
 
 form.addEventListener('submit', async (evento) => {
@@ -36,6 +40,6 @@ form.addEventListener('submit', async (evento) => {
     return;
   }
 
-  // Login certo: redireciona pra área de cadastro
-  window.location.href = 'cadastro.html';
+  //redireciona pro destino original
+  window.location.href = destino;
 });

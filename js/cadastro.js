@@ -7,7 +7,7 @@ if (!session) {
   window.location.href = 'login.html';
 }
 
-const NOME_BUCKET = 'fotos-animais';
+const NOME_BUCKET = 'fotos_animais';
 
 const form = document.getElementById('form-cadastro');
 const btnCadastrar = document.getElementById('btn-cadastrar');
